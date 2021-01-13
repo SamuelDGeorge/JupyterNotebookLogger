@@ -1,0 +1,7 @@
+{
+  "body": {
+    "log_id": "str, id of log",
+    "course_id": "str, id of course",
+    "log": {"json":"object"}
+  }
+}
