@@ -61,6 +61,8 @@ class Pusher(object):
 
     # Look for changes
     def look(self):
+        if (not os.path.isfile(self.filename)):
+            return
         stamp = os.stat(self.filename).st_mtime
         if stamp != self._cached_stamp:
             self._cached_stamp = stamp
@@ -182,7 +184,7 @@ def parse_checkpoint(current_checkpoint):
     
 def push_log(log_filename):
     if os.path.isfile(not log_filename):
-        pass
+        return
     log = None 
     with open(log_filename, 'r') as f:
         log = json.loads(f.read())
