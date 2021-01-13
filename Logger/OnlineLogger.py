@@ -201,7 +201,6 @@ def push_to_cloud(log):
     }
     try :
         requests.post(url, json=help_data)
-        print("Posted!")
     except: 
         pass
 
