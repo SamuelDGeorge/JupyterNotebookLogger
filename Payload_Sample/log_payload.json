@@ -4,6 +4,7 @@
     "machine_id": "str, id of machine",
     "course_id": "str, id of course",
     "log_type": "str, type of log",
-    "log": {"json":"object"}
+    "log": {"json":"object"},
+    "session_id": "str, optional"
   }
 }
