@@ -6,6 +6,7 @@ import json
 import datetime
 import random
 import requests
+import uuid
 from pathlib import Path
 import zipfile
 
@@ -197,10 +198,13 @@ def push_to_cloud(log):
     help_data = {
         "body": {
             "log_id": log['log_id'],
+            "machine_id": log['machine_id'],
             "course_id": "1234",
+            "log_type": "Jupyter",
             "log": log
-        }
+  }
     }
+
     try :
         requests.post(url, json=help_data)
     except: 
@@ -246,8 +250,10 @@ def logger(base_filename):
         else:
             with open(log, "w") as f:
                 log_id = str(random.randint(10000000000000000, 99999999999999999))
+                machine_id = str(hex(uuid.getnode()))
                 new = {
                         "log_id": log_id,
+                        "machine_id" : machine_id,
                         "original_checkpoint":{"time":str(datetime.datetime.now()),"checkpoint":checkpoint},
                         "current_checkpoint" : {"time":str(datetime.datetime.now()),"checkpoint":checkpoint},
                         "diffs" : []
