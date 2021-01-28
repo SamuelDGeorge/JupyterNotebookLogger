@@ -199,7 +199,7 @@ def push_to_cloud(log):
         "body": {
             "log_id": log['log_id'],
             "machine_id": log['machine_id'],
-            "course_id": "1234",
+            "course_id": log['course_id'],
             "log_type": "Jupyter",
             "log": log
   }
@@ -212,7 +212,7 @@ def push_to_cloud(log):
 
 
 # Call this function each time a change happens
-def logger(base_filename):
+def logger(base_filename, course_id = "NoCourseSpecified"):
     src_path = os.path.realpath(base_filename)
     dir_path = os.path.dirname(src_path)
     
@@ -254,6 +254,7 @@ def logger(base_filename):
                 new = {
                         "log_id": log_id,
                         "machine_id" : machine_id,
+                        "course_id": course_id,
                         "original_checkpoint":{"time":str(datetime.datetime.now()),"checkpoint":checkpoint},
                         "current_checkpoint" : {"time":str(datetime.datetime.now()),"checkpoint":checkpoint},
                         "diffs" : []
