@@ -212,7 +212,7 @@ def push_to_cloud(log):
 
 
 # Call this function each time a change happens
-def logger(base_filename, course_id = "NoCourseSpecified"):
+def logger(base_filename, course_id):
     src_path = os.path.realpath(base_filename)
     dir_path = os.path.dirname(src_path)
     
@@ -261,10 +261,10 @@ def logger(base_filename, course_id = "NoCourseSpecified"):
                         }                    
                 f.write(json.dumps(new))
     
-def start(watch_file, IRB_consent = True):
+def start(watch_file, course_id = "NoCourseSpecified" ,IRB_consent = True):
     if IRB_consent:
-        print('Consent granted: logging will occur') 
-        watcher = Watcher(watch_file, logger, base_filename=watch_file)
+        print('Logging your work!') 
+        watcher = Watcher(watch_file, logger, base_filename=watch_file, course_id=course_id)
         log_file = watch_file.split('.')[0] + "_log.json"
         pusher = Pusher(log_file, push_log, log_filename=log_file)
         thread = threading.Thread(target=lambda: watcher.watch(), daemon=True)
