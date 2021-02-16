@@ -5,6 +5,6 @@
     "password": "str, password (currently 'password')",
     "skip": 0,
     "limit": 100,
-    "course_id": "str, id of course, optional",
+    "course_id": "str, id of course, optional"
   }
 }

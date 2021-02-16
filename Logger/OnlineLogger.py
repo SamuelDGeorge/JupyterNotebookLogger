@@ -202,7 +202,7 @@ def push_to_cloud(log):
             "course_id": log['course_id'],
             "log_type": "Jupyter",
             "log": log
-  }
+    }
     }
 
     try :
