@@ -1,0 +1,10 @@
+{
+  "body": {
+    
+    "log_type": "str, type of log",
+    "password": "str, password (currently 'password')",
+    "skip": 0,
+    "limit": 100,
+    "course_id": "str, id of course, optional",
+  }
+}
