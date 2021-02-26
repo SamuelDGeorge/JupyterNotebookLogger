@@ -250,7 +250,8 @@ def logger(base_filename, course_id):
         else:
             with open(log, "w") as f:
                 log_id = str(random.randint(10000000000000000, 99999999999999999))
-                machine_id = str(hex(uuid.getnode()))
+                mac = hex(uuid.getnode() >> 2)
+                machine_id = str(mac)
                 new = {
                         "log_id": log_id,
                         "machine_id" : machine_id,
